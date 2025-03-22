@@ -130,6 +130,18 @@ p {
   border-left: 4px solid #b47bff;
 }
 
+.kickstarter .tier-title {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.kickstarter ul.tier-items {
+  padding-left: 1.5rem;
+  list-style-type: disc;
+  margin: 0;
+
+}
+
 /* Responsive */
 @media (max-width: 600px) {
   h1 {
