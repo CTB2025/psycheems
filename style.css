@@ -110,6 +110,7 @@ p {
 }
 
 .kickstarter h2 {
+  text-align: center;
   font-size: 2rem;
   color: #f8bfff;
   margin-bottom: 1rem;
