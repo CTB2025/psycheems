@@ -1,36 +1,66 @@
+/* Base Styling */
 body {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(120deg, #111111, #1e1e1e, #222831);
+  background: #111;
   color: #f0f0f0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  overflow-x: hidden;
+  position: relative;
   min-height: 100vh;
-  padding: 2rem;
 }
 
+/* Star Animation Background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background: url('https://upload.wikimedia.org/wikipedia/commons/5/58/Stars-Animated.gif') repeat;
+  background-size: cover;
+  animation: moveStars 100s linear infinite;
+  z-index: -1;
+  opacity: 0.08;
+}
+
+@keyframes moveStars {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* Main Container */
 .container {
   text-align: center;
-  max-width: 700px;
-  padding: 30px;
+  max-width: 800px;
+  padding: 40px 20px;
+  margin: auto;
   border-radius: 12px;
   background-color: rgba(255, 255, 255, 0.03);
-  box-shadow: 0 0 20px rgba(138, 43, 226, 0.3);
+  box-shadow: 0 0 30px rgba(174, 0, 255, 0.3);
+  backdrop-filter: blur(10px);
 }
 
+/* Headings */
 h1 {
-  font-size: 2.5rem;
+  font-size: 3rem;
   color: #b47bff;
+  margin-bottom: 20px;
 }
 
+/* Paragraphs */
 p {
   font-size: 1.1rem;
   line-height: 1.6;
   margin-bottom: 1rem;
 }
 
+/* Buttons */
 .btn {
   display: inline-block;
   padding: 10px 20px;
@@ -46,6 +76,7 @@ p {
   background-color: #8e5ee0;
 }
 
+/* Cheems Token Image */
 .cheems-image {
   max-width: 300px;
   margin: 2rem auto;
@@ -59,42 +90,43 @@ p {
   transform: scale(1.05);
 }
 
-/* 🔮 Kickstarter Section */
-.kickstarter {
+/* Kickstarter Section */
+.kickstarter-section {
+  margin-top: 3rem;
   text-align: left;
-  background-color: rgba(255, 255, 255, 0.05);
-  padding: 1.5rem;
-  margin-top: 2rem;
-  border-left: 4px solid #b47bff;
-  border-radius: 10px;
 }
 
-.kickstarter h2 {
-  color: #f7a7ff;
+.kickstarter-section h2 {
+  font-size: 2rem;
+  color: #f8bfff;
   margin-bottom: 1rem;
-  font-size: 1.8rem;
 }
 
-.kickstarter ul {
+.kickstarter-section ul {
   list-style: none;
-  padding-left: 1rem;
-  margin: 1rem 0;
+  padding: 0;
+  line-height: 1.7;
 }
 
-.kickstarter ul li::before {
-  content: "✨ ";
-  color: #b47bff;
+.kickstarter-section li {
+  margin-bottom: 1rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 1rem;
+  border-radius: 10px;
+  border-left: 4px solid #b47bff;
 }
 
-.kickstarter ul li {
-  margin-bottom: 0.8rem;
-  font-size: 1rem;
-}
+/* Responsive */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2rem;
+  }
 
-.kickstarter em {
-  display: block;
-  margin-top: 1rem;
-  font-size: 0.95rem;
-  color: #ccc;
-  font-style: italic;
+  .cheems-image {
+    max-width: 90%;
+  }
+
+  .kickstarter-section h2 {
+    font-size: 1.5rem;
+  }
 }
