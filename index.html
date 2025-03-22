@@ -2,35 +2,82 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Psychic Cheems</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <canvas id="starfield"></canvas>
   <div class="container">
     <h1>🔮 Psychic Cheems</h1>
     <p>Welcome to <strong>Psychic Cheems</strong> – the interdimensional meme prophet guiding your portfolio with cosmic clarity.</p>
     <p>Fueled by vibes, powered by prophecy, <code>PSYCHEEMS</code> is more than a token – it's a vision.</p>
     <p>Join the cult of clarity and ride the psychic wave.</p>
 
-    <!-- 🐶 Insert Cheems Image -->
     <img src="images/psycheemstoken.png" alt="Psychic Cheems Token" class="cheems-image" />
 
     <a href="https://bscscan.com/token/0xF2d276dC3C45090c6840298C1c07C1193f760e12" target="_blank" class="btn">View on BscScan</a>
 
-    <section class="kickstarter">
-      <h2>📦 Kickstarter: Psychic Cheems Tarot Deck</h2>
-      <p>Back our mystical journey and receive powerful rewards:</p>
+    <div class="kickstarter">
+      <h2>✨ Psychic Cheems Tarot Kickstarter ✨</h2>
       <ul>
-        <li><strong>$5 Tier:</strong> Name on the website and blockchain.</li>
-        <li><strong>$10 Tier:</strong> One exclusive Psychic Cheems sticker.</li>
-        <li><strong>$25 Tier:</strong> Sticker set (3 designs) + 1 holographic tarot card.</li>
-        <li><strong>$50 Tier:</strong> Full deck + sticker set + holographic card.</li>
-        <li><strong>$100 Tier:</strong> Full deck + sticker set + holographic card + velvet bag + your name on a special contributor card in every deck.</li>
+        <li><strong>$5:</strong> Name listed on our site + blockchain</li>
+        <li><strong>$10:</strong> Sticker (Cheems seal of prophecy)</li>
+        <li><strong>$25:</strong> Sticker set (3) + 1 holographic tarot card</li>
+        <li><strong>$50:</strong> Full Tarot Deck + sticker set + holographic card</li>
+        <li><strong>$100:</strong> Deck, sticker set, holographic card, velvet bag, and name on special contributor card</li>
       </ul>
-      <p><em>🔁 All tiers include an optional entry into the $PSYCHEEMS token airdrop.</em></p>
-      <a href="https://kickstarter.com/your-campaign-link" target="_blank" class="btn">Support on Kickstarter</a>
-    </section>
+      <p><em>All tiers include optional entry into the $PSYCHEEMS token airdrop.</em></p>
+      <a href="#" class="btn">Back the Tarot Deck</a>
+    </div>
   </div>
+
+  <script>
+    const canvas = document.getElementById('starfield');
+    const ctx = canvas.getContext('2d');
+    let stars = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    function createStars(count) {
+      stars = [];
+      for (let i = 0; i < count; i++) {
+        stars.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          radius: Math.random() * 1.5,
+          alpha: Math.random(),
+          delta: Math.random() * 0.02
+        });
+      }
+    }
+
+    function drawStars() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#ffffff';
+      stars.forEach(star => {
+        ctx.globalAlpha = star.alpha;
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.radius, 0, 2 * Math.PI);
+        ctx.fill();
+
+        star.alpha += star.delta;
+        if (star.alpha <= 0 || star.alpha >= 1) star.delta = -star.delta;
+      });
+      requestAnimationFrame(drawStars);
+    }
+
+    window.addEventListener('resize', () => {
+      resizeCanvas();
+      createStars(150);
+    });
+
+    resizeCanvas();
+    createStars(150);
+    drawStars();
+  </script>
 </body>
 </html>
