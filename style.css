@@ -21,7 +21,7 @@ body::before {
   background: url('https://upload.wikimedia.org/wikipedia/commons/5/58/Stars-Animated.gif') repeat;
   background-size: cover;
   animation: moveStars 100s linear infinite;
-  z-index: -1;
+  z-index: -2;
   opacity: 0.08;
 }
 
@@ -34,16 +34,28 @@ body::before {
   }
 }
 
+/* Star Canvas */
+#starfield {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+}
+
 /* Main Container */
 .container {
   text-align: center;
   max-width: 800px;
   padding: 40px 20px;
-  margin: auto;
+  margin: 0 auto; /* centers container */
   border-radius: 12px;
-  background-color: rgba(255, 255, 255, 0.03);
+  background-color: rgba(0, 0, 0, 0.2); /* more transparent */
   box-shadow: 0 0 30px rgba(174, 0, 255, 0.3);
   backdrop-filter: blur(10px);
+  margin-top: 40px; /* controlled spacing at top */
 }
 
 /* Headings */
@@ -51,6 +63,7 @@ h1 {
   font-size: 3rem;
   color: #b47bff;
   margin-bottom: 20px;
+  margin-top: 0; /* remove default top margin */
 }
 
 /* Paragraphs */
@@ -91,24 +104,24 @@ p {
 }
 
 /* Kickstarter Section */
-.kickstarter-section {
+.kickstarter {
   margin-top: 3rem;
   text-align: left;
 }
 
-.kickstarter-section h2 {
+.kickstarter h2 {
   font-size: 2rem;
   color: #f8bfff;
   margin-bottom: 1rem;
 }
 
-.kickstarter-section ul {
+.kickstarter ul {
   list-style: none;
   padding: 0;
   line-height: 1.7;
 }
 
-.kickstarter-section li {
+.kickstarter li {
   margin-bottom: 1rem;
   background-color: rgba(255, 255, 255, 0.05);
   padding: 1rem;
@@ -126,7 +139,7 @@ p {
     max-width: 90%;
   }
 
-  .kickstarter-section h2 {
+  .kickstarter h2 {
     font-size: 1.5rem;
   }
 }
